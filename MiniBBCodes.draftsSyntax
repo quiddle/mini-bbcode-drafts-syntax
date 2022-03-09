@@ -1,0 +1,130 @@
+{
+  "name": "Mini BBCode",
+  "description": "A minimal subset of the BBCode syntax: https://en.wikipedia.org/wiki/BBCode",
+  "sampleText": "Supports:\n- [b]bold[/b]\n- [i]italic[/i]\n- [u]underline[/u]\n- [s]strikethrough[/s]\n- URL (link) [url]https://example.com/[/url]\n- URL (text) [url=https://example.com/]Example Text[/url]\n- Image [img]http://example.com/someimage.jpg[/img]",
+  "author": "Quiddle",
+  "fileExtensions": [ ],
+  "rangeExtensionType": {
+    "default": "lineExtended"
+  },
+  "patterns": [
+    {
+      "match": "((\\[i\\])([\\S?].*?)(\\[\/i\\]))",
+      "exclusive": false,
+      "comment": "BBCode italic like [i]italic[/i]",
+      "captures": {
+        "2": {
+          "scope": "markup"
+        },
+        "3": {
+          "scope": "text.italic"
+        },
+        "4": {
+          "scope": "markup"
+        }
+      }
+    },
+    {
+      "match": "((\\[b\\])([\\S?].*?)(\\[\/b\\]))",
+      "exclusive": false,
+      "comment": "BBCode bold like [b]bold[/b]",
+      "captures": {
+        "2": {
+          "scope": "markup"
+        },
+        "3": {
+          "scope": "text.bold"
+        },
+        "4": {
+          "scope": "markup"
+        }
+      }
+    },
+    {
+      "match": "((\\[u\\])([\\S?].*?)(\\[\/u\\]))",
+      "exclusive": false,
+      "comment": "BBCode underline like [u]underline[/u]",
+      "captures": {
+        "2": {
+          "scope": "markup"
+        },
+        "3": {
+          "scope": "text.underline"
+        },
+        "4": {
+          "scope": "markup"
+        }
+      }
+    },
+    {
+      "match": "((\\[s\\])([\\S?].*?)(\\[\/s\\]))",
+      "exclusive": false,
+      "comment": "BBCode strikethrough like [s]strikethrough[/s]",
+      "captures": {
+        "2": {
+          "scope": "markup"
+        },
+        "3": {
+          "scope": "text.strikethrough"
+        },
+        "4": {
+          "scope": "markup"
+        }
+      }
+    },
+    {
+      "match": "((\\[img\\])([\\S?].*?)(\\[\/img\\]))",
+      "exclusive": false,
+      "comment": "BBCode image like [img]https://example.com/someImage.jpg[/img]",
+      "captures": {
+        "2": {
+          "scope": "markup.link"
+        },
+        "3": {
+          "scope": "text.url,text.underline"
+        },
+        "4": {
+          "scope": "markup.link"
+        }
+      }
+    },
+    {
+      "match": "((\\[url\\])([\\S?].*?)(\\[\/url\\]))",
+      "exclusive": false,
+      "comment": "BBCode link like [url]https://example.com/[/url]",
+      "captures": {
+        "2": {
+          "scope": "markup.link"
+        },
+        "3": {
+          "scope": "text.url,text.underline"
+        },
+        "4": {
+          "scope": "markup.link"
+        }
+      }
+    },
+    {
+      "match": "((\\[url=)([^\\]]+)(\\])(.*?)(\\[\/url\\]))",
+      "exclusive": false,
+      "comment": "BBCode link like [url=https://example.com/]Click Here[/url]",
+      "captures": {
+        "2": {
+          "scope": "markup.link"
+        },
+        "3": {
+          "scope": "text.url,text.underline"
+        },
+        "4": {
+          "scope": "markup.link"
+        },
+        "5": {
+          "scope": "text.link"
+        },
+        "6": {
+          "scope": "markup.link"
+        }
+      }
+    }
+  ]
+}
